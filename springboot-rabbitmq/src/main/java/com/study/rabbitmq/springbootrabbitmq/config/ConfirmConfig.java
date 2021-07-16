@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
  * @Description:
  *
  *   配置类  发布确认（生产者发送后接受应答）
+ *   消费后接受确认信息
  */
 @Component
 public class ConfirmConfig {
