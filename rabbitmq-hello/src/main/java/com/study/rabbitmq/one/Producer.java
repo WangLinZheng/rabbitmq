@@ -20,6 +20,12 @@ import java.util.concurrent.TimeoutException;
  */
 public class Producer {
 
+    private final static String RABBIT_MQ_HOST = "116.62.223.215";
+
+    private final static String RABBIT_MQ_USERNAME = "admin";
+
+    private final static String RABBIT_MQ_PASSWORD = "admin";
+
     //队列名称
     public static final String QUEUE_NAME = "hello";
 
@@ -27,11 +33,11 @@ public class Producer {
         //创建一个连接工厂
         ConnectionFactory factory = new ConnectionFactory();
         //工厂IP 连接RabbitMQ的队列
-        factory.setHost("192.168.94.201");
+        factory.setHost(RABBIT_MQ_HOST);
         //设置用户名
-        factory.setUsername("admin");
+        factory.setUsername(RABBIT_MQ_USERNAME);
         //设置密码
-        factory.setPassword("123");
+        factory.setPassword(RABBIT_MQ_PASSWORD);
 //        创建连接
         Connection connection = factory.newConnection();
 //        获取信道

@@ -18,7 +18,7 @@ import java.util.Date;
  * @Description:
  */
 @Slf4j
-@Component
+//@Component
 public class DelayedQueueConsumer {
 
     @RabbitListener(queues = DelayedQueueConfig.DELAYED_QUEUE_NAME)

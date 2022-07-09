@@ -73,7 +73,8 @@ public class Consumer04 {
         //处理回调，该方法实际接收消息message.getBody. {}中处理回调信息，此处做个打印
         DeliverCallback deliverCallback = (consumerTag, message) ->{
             String msg = new String(message.getBody(), "UTF-8");
-            if (msg.equals("hello world5")){
+            String refusedWord = "hello world5";
+            if (msg.equals(refusedWord)){
                 System.out.println("消费者04接受消息 ： "+msg +": 该消息被拒绝");
                 //拒绝消息，是否放回队列
                 channel.basicReject(message.getEnvelope().getDeliveryTag(),false);

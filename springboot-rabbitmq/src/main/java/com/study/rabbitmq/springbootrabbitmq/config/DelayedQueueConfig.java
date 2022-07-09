@@ -11,7 +11,14 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+/**
+ * 延迟队列配置
+ *
+ *
+ * @author wlz
+ * @date 2022/7/8 11:08
+ */
+//@Configuration
 public class DelayedQueueConfig {
     public static final String DELAYED_QUEUE_NAME = "delayed.queue";
     public static final String DELAYED_EXCHANGE_NAME = "delayed.exchange";
@@ -22,10 +29,14 @@ public class DelayedQueueConfig {
         return new Queue(DELAYED_QUEUE_NAME);
     }
 
-    //自定义交换机 我们在这里定义的是一个延迟交换机
+    /**
+     * @Description 自定义交换机 我们在这里定义的是一个延迟交换机
+     * @author wlz
+     * @date 2022/7/8 11:07
+     */
     @Bean
     public CustomExchange delayedExchange() {
-        Map<String, Object> args = new HashMap<>();
+        Map<String, Object> args = new HashMap<>(16);
         //自定义交换机的类型
         args.put("x-delayed-type", "direct");
         /**

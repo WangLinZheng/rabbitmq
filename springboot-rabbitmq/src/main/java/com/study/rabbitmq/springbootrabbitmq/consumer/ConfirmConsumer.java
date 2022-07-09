@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * 发布确认消费者
+ * 发布确认模式的消费者
  */
 @Component
 @Slf4j

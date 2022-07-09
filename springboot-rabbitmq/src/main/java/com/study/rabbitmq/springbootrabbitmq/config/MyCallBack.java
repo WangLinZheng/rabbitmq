@@ -13,10 +13,11 @@ import javax.annotation.PostConstruct;
 @Slf4j
 public class MyCallBack implements RabbitTemplate.ConfirmCallback,RabbitTemplate.ReturnCallback {
 
+    private final RabbitTemplate rabbitTemplate;
 
-
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    public MyCallBack(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
 
     @PostConstruct

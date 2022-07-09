@@ -6,15 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * Created with IntelliJ IDEA.
+ *
  *
  * @Author: kuzz
  * @Date: 2021/07/12/18:00
  * @Description:
- *
  *   配置类  发布确认（生产者发送后接受应答）
  *   消费后接受确认信息
- *   kuz分支修改信息
+ *
  */
 @Component
 public class ConfirmConfig {
@@ -26,7 +25,12 @@ public class ConfirmConfig {
     public static final String WARNING_QUEUE_NAME = "warning.queue";
 
 
-    // 声明确认队列
+    /**
+     *
+     * @Description 声明确认队列
+     * @author wlz
+     * @date 2022/7/8 11:11
+     */
     @Bean("confirmQueue")
     public Queue confirmQueue() {
         return QueueBuilder.durable(CONFIRM_QUEUE_NAME).build();

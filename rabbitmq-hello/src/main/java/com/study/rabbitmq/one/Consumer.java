@@ -12,11 +12,21 @@ import com.rabbitmq.client.*;
 public class Consumer {
     private final static String QUEUE_NAME = "hello";
 
+    private final static String RABBIT_MQ_HOST = "116.62.223.215";
+
+    private final static String RABBIT_MQ_USERNAME = "admin";
+
+    private final static String RABBIT_MQ_PASSWORD = "admin";
+
     public static void main(String[] args) throws Exception {
+        //创建一个连接工厂
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.94.201");
-        factory.setUsername("admin");
-        factory.setPassword("123");
+        //工厂IP 连接RabbitMQ的队列
+        factory.setHost(RABBIT_MQ_HOST);
+        //设置用户名
+        factory.setUsername(RABBIT_MQ_USERNAME);
+        //设置密码
+        factory.setPassword(RABBIT_MQ_PASSWORD);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         System.out.println("等待接收消息....");

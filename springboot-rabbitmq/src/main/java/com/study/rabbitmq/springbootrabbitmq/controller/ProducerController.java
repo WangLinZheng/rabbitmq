@@ -2,6 +2,8 @@ package com.study.rabbitmq.springbootrabbitmq.controller;
 
 import com.study.rabbitmq.springbootrabbitmq.config.ConfirmConfig;
 import com.study.rabbitmq.springbootrabbitmq.config.MyCallBack;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -27,17 +29,15 @@ public class ProducerController {
 
 //    public static final String CONFIRM_EXCHANGE_NAME = "confirm.exchange";
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
-    /**
-     *
-     *
-     *
-     * @param message
-     */
+    public ProducerController(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
+
+    @ApiOperation("消息队列发送消息")
     @GetMapping("sendMessage/{message}")
-    public void sendMessage(@PathVariable String message){
+    public void sendMessage(@PathVariable @ApiParam("消息内容") String message){
         //指定消息 id 为 1
         CorrelationData correlationData1=new CorrelationData("1");
         String routingKey="key1";

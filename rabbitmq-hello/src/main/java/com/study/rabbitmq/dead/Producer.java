@@ -22,17 +22,25 @@ import java.util.concurrent.TimeoutException;
  */
 public class Producer {
 
-    //普通交换机
+    /**
+     * 普通交换机
+     */
     public static final String NORMAL_EXCHANGE = "normal_exchange";
-    //队列名称
+    /**
+     * 队列名称
+     */
     public static final String QUEUE_NAME = "normal_queue";
 
     public static void main(String[] args) throws Exception {
         Channel channel = RabbitMqUtils.getChannel();
 
+        String routingKey ="zhangsan";
+
 //        发消息
         for (int i = 0; i < 11; i++) {
-            String message = "hello world" + i; //初次使用
+            String msg = "hello world";
+            //初次使用
+            String message = msg + i;
             /**
              * 发送一个消息
              * 1.发送到那个交换机
@@ -46,7 +54,7 @@ public class Producer {
                     new AMQP.BasicProperties()
                     .builder().expiration("10000").build();
 
-            channel.basicPublish(NORMAL_EXCHANGE,"zhangsan",properties,message.getBytes("UTF-8"));
+            channel.basicPublish(NORMAL_EXCHANGE,routingKey,properties,message.getBytes("UTF-8"));
             System.out.println("消息发送完毕");
         }
 
